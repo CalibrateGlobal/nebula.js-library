@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import useQlik from '../utils/qlik/useQlik';
 import chartList from '../data/chartList';
+import { Link, useParams } from 'react-router-dom';
 
 const StyledPageContainer = styled.div`
   height: 100vh;
@@ -16,8 +17,10 @@ const StyledChartContainer = styled.div`
 `;
 
 const TestPage = () => {
-  const appId = chartList[2].appId;
-  const chartId = chartList[2].subcategories[1].chartId;
+  const { category } = useParams();
+  const chartIndex = chartList.findIndex((x) => x.category === category);
+  const appId = chartList[chartIndex].appId;
+  const chartId = chartList[chartIndex].subcategories[1].chartId;
 
   const { nebula } = useQlik(appId);
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import chartList from '../data/chartList';
+import { Link, useParams } from 'react-router-dom';
 
 const StyledScreenContainer = styled.main`
   display: flex;
@@ -93,8 +94,10 @@ const Dashboard = () => {
         <span style={{ width: '6rem' }}></span>
       </StyledNavBar>
       <StyledChartListContainer>
-        {tempArray.map((item) => (
-          <StyledChartItem></StyledChartItem>
+        {chartList.map((item) => (
+          <Link to={`chart/${item.category}`}>
+            <StyledChartItem>{item.category}</StyledChartItem>
+          </Link>
         ))}
       </StyledChartListContainer>
     </StyledScreenContainer>
