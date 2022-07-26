@@ -15,9 +15,9 @@ const StyledChartContainer = styled.div`
   margin: auto;
 `;
 
-const TestPage = () => {
-  const appId = chartList[2].appId;
-  const chartId = chartList[2].subcategories[1].chartId;
+const TestPage2 = () => {
+  const appId = chartList[5].appId;
+  const chartId = chartList[5].subcategories[3].chartId;
 
   const { nebula } = useQlik(appId);
 
@@ -46,4 +46,4 @@ const TestPage = () => {
   );
 };
 
-export default TestPage;
+export default TestPage2;

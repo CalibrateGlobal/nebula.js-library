@@ -77,7 +77,7 @@ const nebulaConfig = embed.createConfiguration({
       load: () => Promise.resolve(boxplot),
     },
     {
-      name: 'combo-chart',
+      name: 'combochart',
       load: () => Promise.resolve(comboChart),
     },
     {
