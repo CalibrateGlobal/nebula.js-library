@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.5",
     "@nebula.js/sn-action-button": "^1.23.0",
     "@nebula.js/sn-bar-chart": "^1.23.1",
     "@nebula.js/sn-boxplot": "^0.34.5",

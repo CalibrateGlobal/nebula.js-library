@@ -6,11 +6,24 @@ const chartList = [
     category: 'barchart',
     appId: app1,
     subcategories: [
-      { title: 'Vertical Bar Chart (Grouped)', chartId: 'pSrddNJ' },
-      { title: 'Horizontal Bar Chart (Grouped with Brush)', chartId: 'WanKdp' },
-      { title: 'Vertical Bar Chart (Stacked)', chartId: 'effpJwz' },
       {
-        title: 'Horizontal Bar Chart (Stacked with Legend)',
+        title: 'Vertical Bar Chart',
+        subtitle: '(Grouped)',
+        chartId: 'pSrddNJ',
+      },
+      {
+        title: 'Horizontal Bar Chart',
+        subtitle: '(Grouped with Brush)',
+        chartId: 'WanKdp',
+      },
+      {
+        title: 'Vertical Bar Chart',
+        subtitle: '(Stacked)',
+        chartId: 'effpJwz',
+      },
+      {
+        title: 'Horizontal Bar Chart',
+        subtitle: '(Stacked with Legend)',
         chartId: 'pSrddNJ',
       },
     ],
@@ -19,14 +32,24 @@ const chartList = [
     category: 'boxplot',
     appId: app1,
     subcategories: [
-      { title: 'Vertical Box Plot (Standard Outliers)', chartId: 'DeGxf' },
       {
-        title: 'Vertical Box Plot (Standard Deviation Outliers)',
+        title: 'Vertical Box Plot',
+        subtitle: '(Standard Outliers)',
+        chartId: 'DeGxf',
+      },
+      {
+        title: 'Vertical Box Plot',
+        subtitle: '(Standard Deviation Outliers)',
         chartId: 'kmjkUq',
       },
-      { title: 'Horizontal Box Plot (Standard Outliers)', chartId: 'mDmbfT' },
       {
-        title: 'Horizontal Box Plot (Standard Deviation Outliers)',
+        title: 'Horizontal Box Plot',
+        subtitle: '(Standard Outliers)',
+        chartId: 'mDmbfT',
+      },
+      {
+        title: 'Horizontal Box Plot',
+        subtitle: '(Standard Deviation Outliers)',
         chartId: 'nrRDG',
       },
     ],
@@ -36,12 +59,18 @@ const chartList = [
     appId: app1,
     subcategories: [
       {
-        title: 'Vertical Bullet Plot (Common Axis with Target',
+        title: 'Vertical Bullet Plot',
+        subtitle: '(Common Axis with Target)',
         chartId: 'bsw',
       },
-      { title: 'Vertical Bullet Plot (Segments with Target', chartId: 'MnyJh' },
       {
-        title: 'Horizontal Bullet Plot (Common Axis with Target',
+        title: 'Vertical Bullet Plot',
+        subtitle: '(Segments with Target)',
+        chartId: 'MnyJh',
+      },
+      {
+        title: 'Horizontal Bullet Plot',
+        subtitle: '(Common Axis with Target)',
         chartId: 'VyVfXc',
       },
     ],
@@ -81,7 +110,8 @@ const chartList = [
         chartId: 'LtZ',
       },
       {
-        title: 'Horizontal Combo Chart (Stacked)',
+        title: 'Horizontal Combo Chart ',
+        subtitle: '(Stacked)',
         chartId: 'yAve',
       },
       {
@@ -89,7 +119,8 @@ const chartList = [
         chartId: 'JppYmm',
       },
       {
-        title: 'Vertical Combo Chart (Grouped)',
+        title: 'Vertical Combo Chart',
+        subtitle: '(Grouped)',
         chartId: 'bhgCPxJ',
       },
     ],
@@ -99,19 +130,23 @@ const chartList = [
     appId: app2,
     subcategories: [
       {
-        title: 'Vertical Distribution Plot (Grouped)',
+        title: 'Vertical Distribution Plot',
+        subtitle: '(Grouped)',
         chartId: 'JPkma',
       },
       {
-        title: 'Vertical Distribution Plot (Grouped with Reference Line)',
+        title: 'Vertical Distribution Plot',
+        subtitle: '(Grouped with Reference Line)',
         chartId: 'pYJFmmh',
       },
       {
-        title: 'Horizontal Distribution Plot (Grouped)',
+        title: 'Horizontal Distribution Plot',
+        subtitle: '(Grouped)',
         chartId: 'mbJnpG',
       },
       {
-        title: 'Horizontal Distribution Plot (Grouped with Reference Line)',
+        title: 'Horizontal Distribution Plot',
+        subtitle: '(Grouped with Reference Line)',
         chartId: 'nEcUJT',
       },
     ],
