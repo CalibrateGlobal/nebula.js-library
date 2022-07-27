@@ -83,9 +83,7 @@ const Chart = () => {
         <StyledCodeButton>Code</StyledCodeButton>
         <StyledHamburgerMenuIcon />
       </StyledNavBar>
-      <StyledChartContainer ref={chartRef}>
-        <StyledChartTitle>Sales by region:</StyledChartTitle>
-      </StyledChartContainer>
+      <StyledChartContainer ref={chartRef} />
     </StyledPageContainer>
   );
 };
