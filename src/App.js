@@ -1,19 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import TestPage from './pages/TestPage';
-import TestPage2 from './pages/TestPage2';
+import Chart from './pages/Chart';
 import IconList from './pages/IconList';
+import { GlobalStyle } from './globalStyles';
 
 const App = () => {
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/chart/:category" element={<TestPage />} />
-        <Route path="/test" element={<TestPage />} />
-        <Route path="/test2" element={<TestPage2 />} />
+        <Route path="/chart/:category" element={<Chart />} />
         <Route path="/iconlist" element={<IconList />} />
       </Routes>
     </BrowserRouter>
