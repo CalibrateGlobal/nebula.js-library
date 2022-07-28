@@ -49,16 +49,16 @@ const Chart = () => {
   const chartTitle = chartList[chartIndex].subcategories[0].title;
   const chartSubTitle = chartList[chartIndex].subcategories[0].subtitle;
 
-  const { nebula } = useQlik(appId);
+  const { nebula } = useQlik(appId); // The nebula embed instance based on the qDoc associated with the given appId
 
   const chartRef = useRef();
 
   const [chart, setChart] = useState();
 
   const renderChart = useCallback(async () => {
-    const renderedChart = await nebula.render({
-      element: chartRef.current,
-      id: chartId,
+    const renderedChart = await nebula.render({ // Utilises the nebula embed instance to render the desired visualisation:
+      element: chartRef.current, // Reference to the element that the visualisation will be rendered into (The element must have dimensions specified)
+      id: chartId, //The Object ID of the Qlik Sense chart etc. that will be rendered
     });
     setChart(renderedChart);
   }, [nebula]);
