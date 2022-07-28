@@ -19,21 +19,28 @@ import orgChart from '@nebula.js/sn-org-chart';
 import pivotTable from '@nebula.js/sn-pivot-table';
 import table from '@nebula.js/sn-table';
 import waterfall from '@nebula.js/sn-waterfall';
+// Nebula.js chart inventory: https://qlik.dev/libraries-and-tools/visualizations/inventory
 
-// Register the relevant charts with Nebula.
+// The core nebula/stardust module doesn't contain any visualizations. Each visualization type has its own separate module and needs to be loaded and registered before it can be used.
+// (Visualisations are available as separate NPM packages, as imported above)
+
+// This config will be applied to the nebula embed instance when it is created:
 const nebulaConfig = embed.createConfiguration({
+  // The config allows for very limited universal styling changes to the registered visualisations (i.e. light or dark theme)
   context: {
     theme: 'light',
     language: 'en-US',
     constraints: {
-      active: false,
-      passive: false,
-      select: false,
+      active: false, // Toggles interactions like tooltips
+      passive: false, // Toggles interactions that affect the state of the visual representation like zoom, scroll, etc.
+      select: false, // Toggles selections
+      // For all of the above constraints, the default value is false (i.e. interactions are present, selections are allowed)
     },
   },
   types: [
+    // Each visualisation type needs to be loaded/registered in the following manner:
     {
-      name: 'barchart', // Name must be all lowercase, barChart breaks it
+      name: 'barchart', // The name property must correspond with the qType of the Qlik object that is intended to be rendered
       load: () => Promise.resolve(barChart),
     },
     {
@@ -69,7 +76,7 @@ const nebulaConfig = embed.createConfiguration({
       load: () => Promise.resolve(bulletChart),
     },
     {
-      name: 'button',
+      name: 'action-button',
       load: () => Promise.resolve(button),
     },
     {
