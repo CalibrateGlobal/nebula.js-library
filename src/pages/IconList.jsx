@@ -20,7 +20,6 @@ import {
   StyledScatterPlotIcon,
   StyledWaterfallChartIcon,
 } from '../components/icons/StyledChartIcons';
-import chartList from '../data/chartList';
 
 const StyledScreenContainer = styled.main`
   display: flex;
