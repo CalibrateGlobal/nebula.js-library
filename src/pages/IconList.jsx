@@ -43,7 +43,7 @@ const StyledChartListInnerContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: calc(100% - 50px);
+  height: calc(100% - 100px);
   overflow-y: auto;
   overflow-x: auto;
   margin: 50px auto 50px auto;
@@ -63,7 +63,6 @@ const StyledChartListInnerContainer = styled.div`
 
   &::-webkit-scrollbar-track-piece {
     background: grey;
-    margin-bottom: 50px;
     border-radius: 5px;
     border-left: 2px solid #171f34;
     border-right: 2px solid #171f34;

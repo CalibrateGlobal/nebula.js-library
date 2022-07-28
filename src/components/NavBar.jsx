@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import LogoIcon from './../assets/icons/LogoIcon';
 import HamburgerMenuIcon from './../assets/icons/HamburgerMenuIcon';
+import { Link } from 'react-router-dom';
 
 export const StyledNavBar = styled.nav`
   width: 100%;
-  height: 15%;
-  background: #171f34;
+  height: 150px;
+  background: #1d2741;
   display: flex;
   align-items: center;
 `;
 
-export const StyledNavButton = styled.button`
+export const StyledNavButton = styled(Link)`
   font-size: 1.2rem;
   margin-left: 2rem;
   font-weight: 400;
@@ -19,6 +20,8 @@ export const StyledNavButton = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 `;
 export const StyledCodeButton = styled.button`
   font-size: 1.2rem;
@@ -54,7 +57,9 @@ export const StyledSubTitle = styled.div`
   text-align: center;
 `;
 
-export const StyledLogoIcon = styled(LogoIcon)``;
+export const StyledLogoIcon = styled(LogoIcon)`
+  margin: auto;
+`;
 export const StyledHamburgerMenuIcon = styled(HamburgerMenuIcon)`
   cursor: pointer;
   width: 50px;
