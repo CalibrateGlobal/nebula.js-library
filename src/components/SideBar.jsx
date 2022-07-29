@@ -58,7 +58,7 @@ const StyledSideBarNav = styled.nav`
   background: #1d2741;
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  width: 250px;
+  width: 300px;
   height: calc(100% - 200px);
   display: flex;
   flex-direction: column;
@@ -78,10 +78,10 @@ const StyledChartListInnerContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: calc(100% - 50px);
+  height: calc(100% - 0px);
   overflow-y: auto;
   overflow-x: auto;
-  margin: 50px 10px 50px 10px;
+  margin: 0px 10px 0px 10px;
   padding-right: 10px;
 
   &::-webkit-scrollbar {
@@ -98,24 +98,26 @@ const StyledChartListInnerContainer = styled.div`
 
   &::-webkit-scrollbar-track-piece {
     background: grey;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+    margin-top: 25px;
     border-radius: 5px;
     border-left: 2px solid #171f34;
     border-right: 2px solid #171f34;
   }
 `;
 
-const StyledChartCategoryItem = styled.div`
-  width: 210px;
+const StyledChartCategoryItem = styled(Link)`
+  width: 90%;
   height: fit-content;
   background: #049eb8;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin: auto auto 50px auto;
+  margin: 25px auto 25px auto;
   padding-bottom: 10px;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 const StyledCategoryTitle = styled.h3`
@@ -145,6 +147,10 @@ function SideBar({ chartTitle, chartSubTitle }) {
   const showSidebar = () => setSidebar(!sidebar);
 
   const { category } = useParams();
+
+  const categoryIndex = chartList.findIndex(
+    (item) => item.category === category
+  );
 
   const getIcon = (category) => {
     switch (category) {
@@ -207,24 +213,19 @@ function SideBar({ chartTitle, chartSubTitle }) {
           </NavIcon>
           <StyledSideBarNav sidebar={sidebar}>
             <StyledChartListInnerContainer>
-              {chartList
-                .find((x) => x.category === category)
-                ?.subcategories?.map((item, key) => (
-                  <Link
-                    style={{ textDecoration: 'none' }}
-                    to={`chart/${item.category}`}
-                  >
-                    <StyledChartCategoryItem value={item.category}>
-                      <StyledCategoryTitle>{item.title}</StyledCategoryTitle>
-                      <StyledCategorySubTitle>
-                        {item.subtitle}
-                      </StyledCategorySubTitle>
-                      <StyledIconContainer>
-                        {getIcon(category)}
-                      </StyledIconContainer>
-                    </StyledChartCategoryItem>
-                  </Link>
-                ))}
+              {chartList[categoryIndex].subcategories.map((item) => (
+                <StyledChartCategoryItem
+                  value={item.category}
+                  to={`/chart/${category}/${item.chartId}`}
+                  key={item.chartId}
+                >
+                  <StyledCategoryTitle>{item.title}</StyledCategoryTitle>
+                  <StyledCategorySubTitle>
+                    {item.subtitle}
+                  </StyledCategorySubTitle>
+                  <StyledIconContainer>{getIcon(category)}</StyledIconContainer>
+                </StyledChartCategoryItem>
+              ))}
             </StyledChartListInnerContainer>
           </StyledSideBarNav>
         </StyledSideBarContainer>

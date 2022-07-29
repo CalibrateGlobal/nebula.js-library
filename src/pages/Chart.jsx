@@ -49,18 +49,27 @@ const Chart = () => {
   const [chart, setChart] = useState();
 
   const renderChart = useCallback(async () => {
+
     const renderedChart = await nebula.render({
       element: chartRef.current,
       id: chartId,
     });
     setChart(renderedChart);
-  }, [nebula]);
+  }, [nebula, chartId]);
+
 
   useEffect(() => {
     if (nebula && !chart) {
       renderChart();
     }
   }, [nebula, chart, renderChart]);
+
+  useEffect(() => {
+    if (nebula && chart) {
+      chart.destroy();
+      renderChart();
+    }
+  }, [chartId]);
 
   return (
     <StyledPageContainer>
