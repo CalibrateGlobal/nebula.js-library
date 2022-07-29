@@ -42,21 +42,19 @@ const Chart = () => {
   const chartSubTitle =
     chartList[categoryIndex].subcategories[subCategoryIndex].subtitle;
 
-  const { nebula } = useQlik(appId);
+  const { nebula } = useQlik(appId); // The nebula embed instance based on the qDoc associated with the given appId
 
   const chartRef = useRef();
 
   const [chart, setChart] = useState();
 
   const renderChart = useCallback(async () => {
-
     const renderedChart = await nebula.render({
       element: chartRef.current,
       id: chartId,
     });
     setChart(renderedChart);
   }, [nebula, chartId]);
-
 
   useEffect(() => {
     if (nebula && !chart) {

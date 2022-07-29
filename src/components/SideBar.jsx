@@ -45,13 +45,14 @@ const NavIcon = styled.button`
   text-decoration: none;
   background: transparent;
   border: none;
+  height: fit-content;
 `;
 
 const StyledCloseMenuIcon = styled(CloseMenuIcon)`
   cursor: pointer;
   width: 50px;
   height: 50px;
-  margin: 0 6.5rem 0;
+  margin: 0 125px 0 125px;
 `;
 
 const StyledSideBarNav = styled.nav`
@@ -207,10 +208,10 @@ function SideBar({ chartTitle, chartSubTitle }) {
           <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
         </StyledPageTitle>
         <StyledCodeButton>Code</StyledCodeButton>
+        <NavIcon onClick={showSidebar}>
+          {sidebar ? <StyledCloseMenuIcon /> : <StyledHamburgerMenuIcon />}
+        </NavIcon>
         <StyledSideBarContainer>
-          <NavIcon onClick={showSidebar}>
-            {sidebar ? <StyledCloseMenuIcon /> : <StyledHamburgerMenuIcon />}
-          </NavIcon>
           <StyledSideBarNav sidebar={sidebar}>
             <StyledChartListInnerContainer>
               {chartList[categoryIndex].subcategories.map((item) => (

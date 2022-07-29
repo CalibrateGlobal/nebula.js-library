@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import LogoIcon from './icons/LogoIcon';
+import HamburgerMenuIcon from './icons/HamburgerMenuIcon';
 import { Link } from 'react-router-dom';
 
 export const StyledNavBar = styled.nav`
@@ -59,3 +60,4 @@ export const StyledSubTitle = styled.div`
 export const StyledLogoIcon = styled(LogoIcon)`
   margin: auto;
 `;
+
