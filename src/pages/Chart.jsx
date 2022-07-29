@@ -1,18 +1,11 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { motion, useCycle } from 'framer-motion';
 import useQlik from '../utils/qlik/useQlik';
 import chartList from '../data/chartList';
 import { Link, useParams } from 'react-router-dom';
-import {
-  StyledLogoIcon,
-  StyledNavBar,
-  StyledNavButton,
-  StyledPageTitle,
-  StyledCodeButton,
-  StyledHamburgerMenuIcon,
-  StyledSubTitle,
-  StyledTitle,
-} from '../components/NavBar';
+
+import SideBar from '../components/SideBar';
 
 const StyledPageContainer = styled.div`
   height: 100vh;
@@ -37,11 +30,17 @@ const StyledChartContainer = styled.div`
 
 const Chart = () => {
   const { category, chartId } = useParams();
-  const categoryIndex = chartList.findIndex((item) => item.category === category);
+  const categoryIndex = chartList.findIndex(
+    (item) => item.category === category
+  );
   const appId = chartList[categoryIndex].appId;
-  const subCategoryIndex = chartList[categoryIndex].subcategories.findIndex((item) => item.chartId === chartId);
-  const chartTitle = chartList[categoryIndex].subcategories[subCategoryIndex].title;
-  const chartSubTitle = chartList[categoryIndex].subcategories[subCategoryIndex].subtitle;
+  const subCategoryIndex = chartList[categoryIndex].subcategories.findIndex(
+    (item) => item.chartId === chartId
+  );
+  const chartTitle =
+    chartList[categoryIndex].subcategories[subCategoryIndex].title;
+  const chartSubTitle =
+    chartList[categoryIndex].subcategories[subCategoryIndex].subtitle;
 
   const { nebula } = useQlik(appId); // The nebula embed instance based on the qDoc associated with the given appId
 
@@ -50,12 +49,12 @@ const Chart = () => {
   const [chart, setChart] = useState();
 
   const renderChart = useCallback(async () => {
-    const renderedChart = await nebula.render({ // Utilises the nebula embed instance to render the desired visualisation:
-      element: chartRef.current, // Reference to the element that the visualisation will be rendered into (The element must have dimensions specified)
-      id: chartId, //The Object ID of the Qlik Sense chart etc. that will be rendered
+    const renderedChart = await nebula.render({
+      element: chartRef.current,
+      id: chartId,
     });
     setChart(renderedChart);
-  }, [nebula]);
+  }, [nebula, chartId]);
 
   useEffect(() => {
     if (nebula && !chart) {
@@ -63,20 +62,16 @@ const Chart = () => {
     }
   }, [nebula, chart, renderChart]);
 
+  useEffect(() => {
+    if (nebula && chart) {
+      chart.destroy();
+      renderChart();
+    }
+  }, [chartId]);
+
   return (
     <StyledPageContainer>
-      <StyledNavBar>
-        <StyledNavButton to="/">
-          <StyledLogoIcon />
-          NEBULA.JS LIBRARY
-        </StyledNavButton>
-        <StyledPageTitle>
-          <StyledTitle>{chartTitle}</StyledTitle>
-          <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
-        </StyledPageTitle>
-        <StyledCodeButton>Code</StyledCodeButton>
-        <StyledHamburgerMenuIcon />
-      </StyledNavBar>
+      <SideBar chartTitle={chartTitle} chartSubTitle={chartSubTitle} />
       <StyledChartContainer ref={chartRef} />
     </StyledPageContainer>
   );
