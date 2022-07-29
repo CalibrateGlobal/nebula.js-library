@@ -29,25 +29,19 @@ const StyledChartContainer = styled.div`
   background-color: #171f34;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
-  height: 100%;
-  width: 95%;
+  height: calc(100% - 250px);
+  width: calc(100% - 100px);
   overflow: hidden;
   padding: 25px 25px 50px 50px;
 `;
 
-const StyledChartTitle = styled.p`
-  font-weight: 700;
-  font-size: 2.5rem;
-  color: #ffff;
-`;
-
 const Chart = () => {
-  const { category } = useParams();
-  const chartIndex = chartList.findIndex((x) => x.category === category);
-  const appId = chartList[chartIndex].appId;
-  const chartId = chartList[chartIndex].subcategories[0].chartId;
-  const chartTitle = chartList[chartIndex].subcategories[0].title;
-  const chartSubTitle = chartList[chartIndex].subcategories[0].subtitle;
+  const { category, chartId } = useParams();
+  const categoryIndex = chartList.findIndex((item) => item.category === category);
+  const appId = chartList[categoryIndex].appId;
+  const subCategoryIndex = chartList[categoryIndex].subcategories.findIndex((item) => item.chartId === chartId);
+  const chartTitle = chartList[categoryIndex].subcategories[subCategoryIndex].title;
+  const chartSubTitle = chartList[categoryIndex].subcategories[subCategoryIndex].subtitle;
 
   const { nebula } = useQlik(appId); // The nebula embed instance based on the qDoc associated with the given appId
 
@@ -72,7 +66,7 @@ const Chart = () => {
   return (
     <StyledPageContainer>
       <StyledNavBar>
-        <StyledNavButton>
+        <StyledNavButton to="/">
           <StyledLogoIcon />
           NEBULA.JS LIBRARY
         </StyledNavButton>

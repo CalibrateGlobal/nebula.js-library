@@ -24,7 +24,7 @@ const HamburgerMenuIcon = ({ className }) => {
           x2="40"
           y2="19.8333"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="10"
@@ -32,7 +32,7 @@ const HamburgerMenuIcon = ({ className }) => {
           x2="40"
           y2="19.8333"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="10"
@@ -40,7 +40,7 @@ const HamburgerMenuIcon = ({ className }) => {
           x2="40"
           y2="15.6667"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="10"
@@ -48,17 +48,17 @@ const HamburgerMenuIcon = ({ className }) => {
           x2="40"
           y2="15.6667"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
-        <line x1="10" y1="24" x2="40" y2="24" stroke="white" stroke-width="2" />
-        <line x1="10" y1="24" x2="40" y2="24" stroke="white" stroke-width="2" />
+        <line x1="10" y1="24" x2="40" y2="24" stroke="white" strokeWidth="2" />
+        <line x1="10" y1="24" x2="40" y2="24" stroke="white" strokeWidth="2" />
         <line
           x1="10"
           y1="28.1667"
           x2="40"
           y2="28.1667"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="10"
@@ -66,7 +66,7 @@ const HamburgerMenuIcon = ({ className }) => {
           x2="40"
           y2="28.1667"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="10"
@@ -74,7 +74,7 @@ const HamburgerMenuIcon = ({ className }) => {
           x2="40"
           y2="32.3333"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="10"
@@ -82,7 +82,7 @@ const HamburgerMenuIcon = ({ className }) => {
           x2="40"
           y2="32.3333"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </svg>
       ;

@@ -4,6 +4,7 @@ const app2 = '25bbde2e-79eb-4eab-9c12-4ab56594a738';
 const chartList = [
   {
     category: 'barchart',
+    title: 'Bar Chart',
     appId: app1,
     subcategories: [
       {
@@ -30,6 +31,7 @@ const chartList = [
   },
   {
     category: 'boxplot',
+    title: 'Box Plot',
     appId: app1,
     subcategories: [
       {
@@ -55,21 +57,22 @@ const chartList = [
     ],
   },
   {
-    category: 'bulletplot',
+    category: 'bulletchart',
+    title: 'Bullet Chart',
     appId: app1,
     subcategories: [
       {
-        title: 'Vertical Bullet Plot',
+        title: 'Vertical Bullet Chart',
         subtitle: '(Common Axis with Target)',
         chartId: 'bsw',
       },
       {
-        title: 'Vertical Bullet Plot',
+        title: 'Vertical Bullet Chart',
         subtitle: '(Segments with Target)',
         chartId: 'MnyJh',
       },
       {
-        title: 'Horizontal Bullet Plot',
+        title: 'Horizontal Bullet Chart',
         subtitle: '(Common Axis with Target)',
         chartId: 'VyVfXc',
       },
@@ -77,6 +80,7 @@ const chartList = [
   },
   {
     category: 'button',
+    title: 'Button',
     appId: app2,
     subcategories: [
       {
@@ -103,6 +107,7 @@ const chartList = [
   },
   {
     category: 'combochart',
+    title: 'Combo Chart',
     appId: app2,
     subcategories: [
       {
@@ -127,6 +132,7 @@ const chartList = [
   },
   {
     category: 'distributionplot',
+    title: 'Distribution Plot',
     appId: app2,
     subcategories: [
       {

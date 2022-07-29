@@ -11,7 +11,7 @@ const App = () => {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/chart/:category" element={<Chart />} />
+        <Route path="/chart/:category/:chartId" element={<Chart />} />
         <Route path="/iconlist" element={<IconList />} />
       </Routes>
     </BrowserRouter>
