@@ -25,7 +25,7 @@ const chartList = [
       {
         title: 'Horizontal Bar Chart',
         subtitle: '(Stacked with Legend)',
-        chartId: 'pSrddNJ',
+        chartId: 'jRhn',
       },
     ],
   },

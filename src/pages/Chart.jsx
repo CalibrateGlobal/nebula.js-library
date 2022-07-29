@@ -1,18 +1,11 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { motion, useCycle } from 'framer-motion';
 import useQlik from '../utils/qlik/useQlik';
 import chartList from '../data/chartList';
 import { useParams } from 'react-router-dom';
-import {
-  StyledLogoIcon,
-  StyledNavBar,
-  StyledNavButton,
-  StyledPageTitle,
-  StyledCodeButton,
-  StyledHamburgerMenuIcon,
-  StyledSubTitle,
-  StyledTitle,
-} from '../components/NavBar';
+
+import SideBar from '../components/SideBar';
 
 import CodeModal from '../components/CodeModal';
 
@@ -72,6 +65,13 @@ const Chart = () => {
     }
   }, [nebula, chart, renderChart]);
 
+  useEffect(() => {
+    if (nebula && chart) {
+      chart.destroy();
+      renderChart();
+    }
+  }, [chartId]);
+
   const [codeModalOpen, setCodeModalOpen] = useState(false);
 
   const handleOpenCodeModal = () => {
@@ -88,18 +88,11 @@ const Chart = () => {
 
   return (
     <StyledPageContainer>
-      <StyledNavBar>
-        <StyledNavButton to="/">
-          <StyledLogoIcon />
-          NEBULA.JS LIBRARY
-        </StyledNavButton>
-        <StyledPageTitle>
-          <StyledTitle>{chartTitle}</StyledTitle>
-          <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
-        </StyledPageTitle>
-        <StyledCodeButton onClick={handleOpenCodeModal}>Code</StyledCodeButton>
-        <StyledHamburgerMenuIcon />
-      </StyledNavBar>
+      <SideBar
+        chartTitle={chartTitle}
+        chartSubTitle={chartSubTitle}
+        handleOpenCodeModal={handleOpenCodeModal}
+      />
       <StyledChartContainer ref={chartRef} />
       <CodeModal
         codeModalOpen={codeModalOpen}
