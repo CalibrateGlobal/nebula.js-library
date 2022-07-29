@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import LogoIcon from './../assets/icons/LogoIcon';
-import HamburgerMenuIcon from './../assets/icons/HamburgerMenuIcon';
+import LogoIcon from './icons/LogoIcon';
 import { Link } from 'react-router-dom';
 
 export const StyledNavBar = styled.nav`
@@ -59,10 +58,4 @@ export const StyledSubTitle = styled.div`
 
 export const StyledLogoIcon = styled(LogoIcon)`
   margin: auto;
-`;
-export const StyledHamburgerMenuIcon = styled(HamburgerMenuIcon)`
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  margin: 0 2rem 0;
 `;

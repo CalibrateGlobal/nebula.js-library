@@ -1,18 +1,11 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { motion, useCycle } from 'framer-motion';
 import useQlik from '../utils/qlik/useQlik';
 import chartList from '../data/chartList';
 import { Link, useParams } from 'react-router-dom';
-import {
-  StyledLogoIcon,
-  StyledNavBar,
-  StyledNavButton,
-  StyledPageTitle,
-  StyledCodeButton,
-  StyledHamburgerMenuIcon,
-  StyledSubTitle,
-  StyledTitle,
-} from '../components/NavBar';
+
+import SideBar from '../components/SideBar';
 
 const StyledPageContainer = styled.div`
   height: 100vh;
@@ -37,11 +30,17 @@ const StyledChartContainer = styled.div`
 
 const Chart = () => {
   const { category, chartId } = useParams();
-  const categoryIndex = chartList.findIndex((item) => item.category === category);
+  const categoryIndex = chartList.findIndex(
+    (item) => item.category === category
+  );
   const appId = chartList[categoryIndex].appId;
-  const subCategoryIndex = chartList[categoryIndex].subcategories.findIndex((item) => item.chartId === chartId);
-  const chartTitle = chartList[categoryIndex].subcategories[subCategoryIndex].title;
-  const chartSubTitle = chartList[categoryIndex].subcategories[subCategoryIndex].subtitle;
+  const subCategoryIndex = chartList[categoryIndex].subcategories.findIndex(
+    (item) => item.chartId === chartId
+  );
+  const chartTitle =
+    chartList[categoryIndex].subcategories[subCategoryIndex].title;
+  const chartSubTitle =
+    chartList[categoryIndex].subcategories[subCategoryIndex].subtitle;
 
   const { nebula } = useQlik(appId);
 
@@ -65,18 +64,7 @@ const Chart = () => {
 
   return (
     <StyledPageContainer>
-      <StyledNavBar>
-        <StyledNavButton to="/">
-          <StyledLogoIcon />
-          NEBULA.JS LIBRARY
-        </StyledNavButton>
-        <StyledPageTitle>
-          <StyledTitle>{chartTitle}</StyledTitle>
-          <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
-        </StyledPageTitle>
-        <StyledCodeButton>Code</StyledCodeButton>
-        <StyledHamburgerMenuIcon />
-      </StyledNavBar>
+      <SideBar chartTitle={chartTitle} chartSubTitle={chartSubTitle} />
       <StyledChartContainer ref={chartRef} />
     </StyledPageContainer>
   );

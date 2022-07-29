@@ -85,7 +85,6 @@ const HamburgerMenuIcon = ({ className }) => {
           strokeWidth="2"
         />
       </svg>
-      ;
     </div>
   );
 };
