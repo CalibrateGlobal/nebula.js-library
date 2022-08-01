@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { motion, useCycle } from 'framer-motion';
 import useQlik from '../utils/qlik/useQlik';
 import chartList from '../data/chartList';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import SideBar from '../components/SideBar';
 
+import CodeModal from '../components/CodeModal';
 const StyledPageContainer = styled.div`
   height: 100vh;
   width: 100vw;
@@ -50,8 +51,9 @@ const Chart = () => {
 
   const renderChart = useCallback(async () => {
     const renderedChart = await nebula.render({
-      element: chartRef.current,
-      id: chartId,
+      // Utilises the nebula embed instance to render the desired visualisation:
+      element: chartRef.current, // Reference to the element that the visualisation will be rendered into (The element must have dimensions specified)
+      id: chartId, //The Object ID of the Qlik Sense chart etc. that will be rendered
     });
     setChart(renderedChart);
   }, [nebula, chartId]);
@@ -69,10 +71,32 @@ const Chart = () => {
     }
   }, [chartId]);
 
+  const [codeModalOpen, setCodeModalOpen] = useState(false);
+
+  const handleOpenCodeModal = () => {
+    if (codeModalOpen) {
+      setCodeModalOpen(false);
+    } else {
+      setCodeModalOpen(true);
+    }
+  };
+
+  const handleCloseCodeModal = () => {
+    setCodeModalOpen(false);
+  };
+
   return (
     <StyledPageContainer>
-      <SideBar chartTitle={chartTitle} chartSubTitle={chartSubTitle} />
+      <SideBar
+        chartTitle={chartTitle}
+        chartSubTitle={chartSubTitle}
+        handleOpenCodeModal={handleOpenCodeModal}
+      />
       <StyledChartContainer ref={chartRef} />
+      <CodeModal
+        codeModalOpen={codeModalOpen}
+        handleCloseCodeModal={handleCloseCodeModal}
+      />
     </StyledPageContainer>
   );
 };
