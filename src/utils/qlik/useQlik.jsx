@@ -27,7 +27,7 @@ const useQlik = (appId) => {
     setGlobal(qGlobal);
     setDoc(qDoc);
     setLoading(false);
-  }, [setDoc, setError, setGlobal, setLoading]);
+  }, [setDoc, setError, setGlobal, setLoading, appId]);
 
   const getNebula = useCallback(async () => {
     const nebula = nebulaConfig(doc); // Creates a nebula embed instance associated with the specified qDoc (utilising the configuration details provided in nebulaConfig.js)

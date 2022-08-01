@@ -1,8 +1,8 @@
 import React from 'react';
 
-function CloseMenuIcon({ className }) {
+function CloseMenuIcon({ className, ...rest }) {
   return (
-    <div className={className}>
+    <div className={className} {...rest}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"

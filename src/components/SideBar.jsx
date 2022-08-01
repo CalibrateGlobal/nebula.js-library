@@ -142,7 +142,7 @@ const StyledIconContainer = styled.div`
   margin: auto;
 `;
 
-function SideBar({ chartTitle, chartSubTitle }) {
+function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -207,7 +207,7 @@ function SideBar({ chartTitle, chartSubTitle }) {
           <StyledTitle>{chartTitle}</StyledTitle>
           <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
         </StyledPageTitle>
-        <StyledCodeButton>Code</StyledCodeButton>
+        <StyledCodeButton onClick={handleOpenCodeModal}>Code</StyledCodeButton>
         <NavIcon onClick={showSidebar}>
           {sidebar ? <StyledCloseMenuIcon /> : <StyledHamburgerMenuIcon />}
         </NavIcon>
