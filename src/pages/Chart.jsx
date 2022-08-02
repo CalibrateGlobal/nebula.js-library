@@ -1,9 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { motion, useCycle } from 'framer-motion';
-import useQlik from '../utils/qlik/useQlik';
-import chartList from '../data/chartList';
-import { useParams } from 'react-router-dom';
+import chartList, { app1, app2 } from '../data/chartList';
+import { useParams, Navigate } from 'react-router-dom';
 
 import SideBar from '../components/SideBar';
 
@@ -30,7 +28,7 @@ const StyledChartContainer = styled.div`
   padding: 25px 25px 50px 50px;
 `;
 
-const Chart = () => {
+const Chart = ({ nebula, nebula2, signedIn }) => {
   const { category, chartId } = useParams();
   const categoryIndex = chartList.findIndex(
     (item) => item.category === category
@@ -44,14 +42,19 @@ const Chart = () => {
   const chartSubTitle =
     chartList[categoryIndex].subcategories[subCategoryIndex].subtitle;
 
-  const { nebula } = useQlik(appId); // The nebula embed instance based on the qDoc associated with the given appId
-
   const chartRef = useRef();
 
   const [chart, setChart] = useState();
 
+  let activeNebula = null;
+  if (appId === app1) {
+    activeNebula = nebula;
+  } else {
+    activeNebula = nebula2;
+  }
+
   const renderChart = useCallback(async () => {
-    const renderedChart = await nebula.render({
+    const renderedChart = await activeNebula.render({
       // Utilises the nebula embed instance to render the desired visualisation:
       element: chartRef.current, // Reference to the element that the visualisation will be rendered into (The element must have dimensions specified)
       id: chartId, //The Object ID of the Qlik Sense chart etc. that will be rendered
@@ -60,13 +63,13 @@ const Chart = () => {
   }, [nebula, chartId]);
 
   useEffect(() => {
-    if (nebula && !chart) {
+    if (activeNebula && !chart) {
       renderChart();
     }
-  }, [nebula, chart, renderChart]);
+  }, [activeNebula, chart, renderChart]);
 
   useEffect(() => {
-    if (nebula && chart) {
+    if (activeNebula && chart) {
       chart.destroy();
       renderChart();
     }
@@ -93,7 +96,11 @@ const Chart = () => {
         chartSubTitle={chartSubTitle}
         handleOpenCodeModal={handleOpenCodeModal}
       />
-      <StyledChartContainer ref={chartRef} />
+      {!signedIn ? (
+        <Navigate to="/error" />
+      ) : (
+        <StyledChartContainer ref={chartRef} />
+      )}
       <CodeModal
         codeModalOpen={codeModalOpen}
         handleCloseCodeModal={handleCloseCodeModal}

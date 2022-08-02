@@ -3,7 +3,7 @@ import QlikConnector from './qlikConnector';
 import qlikConfig from './qlikConfig';
 import nebulaConfig from './nebulaConfig';
 
-// Custom hook used to retrieve the qGlobal and qDoc objects associated with an enigma session created based on the provided appId, as well as return the nebula embed instance associated with the relevant qDoc 
+// Custom hook used to retrieve the qGlobal and qDoc objects associated with an enigma session created based on the provided appId, as well as return the nebula embed instance associated with the relevant qDoc
 const useQlik = (appId) => {
   const [global, setGlobal] = useState(undefined);
   const [doc, setDoc] = useState(undefined);
@@ -15,6 +15,7 @@ const useQlik = (appId) => {
   const getQlik = useCallback(async () => {
     let qGlobal;
     let qDoc;
+
     setLoading(true);
 
     try {
@@ -35,10 +36,10 @@ const useQlik = (appId) => {
   }, [doc]);
 
   useEffect(() => {
-    if ((global === undefined || doc === undefined) && !loading) {
+    if ((global === undefined /* || doc === undefined */) && !loading) {
       getQlik();
     }
-  }, [global, doc, getQlik, loading]);
+  }, [global, /* doc, */ getQlik, loading]);
 
   useEffect(() => {
     if (doc && !nebula) {
