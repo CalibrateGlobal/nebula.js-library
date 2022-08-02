@@ -2,7 +2,7 @@
   "name": "nebula.js-library",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://cc-edapps.calibrateconsulting.com/extensions/nebula-lib/index.html",
   "dependencies": {
     "@nebula.js/sn-action-button": "^1.23.0",
     "@nebula.js/sn-bar-chart": "^1.23.1",
