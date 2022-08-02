@@ -1,0 +1,39 @@
+name: Deploy App as Qlik Sense Extension
+
+on:
+  push:
+    branches:
+      - deploy
+
+env:
+  CI: false
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: CalibrateGlobal/checkout-action@main
+
+      - name: Setup node
+        uses: CalibrateGlobal/setup-node-action@main
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build static file
+        run: npm run build
+
+      - name: Copy .qext file
+        run: cp nebula-lib.qext build/
+
+      - name: Zip build folder
+        run: (cd build && zip -r ../nebula-lib.zip .)
+
+      - name: Delete Existing Extension
+        run: |
+          curl -X DELETE -H "X-Qlik-xrfkey: ${{ secrets.XRF }}" -H "Authorization: Bearer ${{ secrets.JWT }}" "https://cc-edapps.calibrateconsulting.com/jwt/qrs/extension/name/nebula-lib?xrfkey=${{ secrets.XRF }}"
+
+      - name: Upload New Extension
+        run: |
+          curl -X POST -H "Content-Type: application/json" -H "X-Qlik-xrfkey: ${{ secrets.XRF }}" -H "Authorization: Bearer ${{ secrets.JWT }}" --data-binary "@nebula-lib.zip" "https://cc-edapps.calibrateconsulting.com/jwt/qrs/extension/upload?xrfkey=${{ secrets.XRF }}"
