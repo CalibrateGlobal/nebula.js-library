@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import CloseMenuIcon from './icons/CloseMenuIcon';
 import HamburgerMenuIcon from './icons/HamburgerMenuIcon';
 import {
@@ -55,7 +56,7 @@ const StyledCloseMenuIcon = styled(CloseMenuIcon)`
   margin: 0 125px 0 125px;
 `;
 
-const StyledSideBarNav = styled.nav`
+const StyledSideBarNav = styled(motion.nav)`
   background: #1d2741;
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -71,9 +72,7 @@ const StyledSideBarNav = styled.nav`
   z-index: 10;
 `;
 
-const StyledSideBarContainer = styled.div`
-  transition: 350ms;
-`;
+const StyledSideBarContainer = styled.div``;
 
 const StyledChartListInnerContainer = styled.div`
   display: flex;
@@ -107,7 +106,7 @@ const StyledChartListInnerContainer = styled.div`
   }
 `;
 
-const StyledChartCategoryItem = styled(Link)`
+const StyledChartCategoryItem = styled(motion.Link)`
   width: 90%;
   height: fit-content;
   background: #049eb8;
@@ -142,7 +141,12 @@ const StyledIconContainer = styled.div`
   margin: auto;
 `;
 
-function SideBar({ chartTitle, chartSubTitle }) {
+const variants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: '100%' },
+};
+
+function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -207,18 +211,29 @@ function SideBar({ chartTitle, chartSubTitle }) {
           <StyledTitle>{chartTitle}</StyledTitle>
           <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
         </StyledPageTitle>
-        <StyledCodeButton>Code</StyledCodeButton>
+        <StyledCodeButton onClick={handleOpenCodeModal}>Code</StyledCodeButton>
         <NavIcon onClick={showSidebar}>
           {sidebar ? <StyledCloseMenuIcon /> : <StyledHamburgerMenuIcon />}
         </NavIcon>
         <StyledSideBarContainer>
-          <StyledSideBarNav sidebar={sidebar}>
+          <StyledSideBarNav
+            sidebar={sidebar}
+            animate={sidebar ? 'open' : 'closed'}
+            variants={variants}
+          >
             <StyledChartListInnerContainer>
               {chartList[categoryIndex].subcategories.map((item) => (
                 <StyledChartCategoryItem
                   value={item.category}
                   to={`/chart/${category}/${item.chartId}`}
                   key={item.chartId}
+                  as={motion.div}
+                  whileHover={{
+                    scale: 1.1,
+                    boxShadow: '0 8px 5px 0 rgba(0, 0, 0, 0.25)',
+                    backdropFilter: 'blur(5.5px)',
+                    WebkitBackdropFilter: 'blur(5.5px)',
+                  }}
                 >
                   <StyledCategoryTitle>{item.title}</StyledCategoryTitle>
                   <StyledCategorySubTitle>
