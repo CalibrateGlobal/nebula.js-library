@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import ModalPortal from '../utils/ModalPortal';
 import CloseMenuIcon from './icons/CloseMenuIcon';
+import GithubIcon from './icons/GithubIcon';
+import ChartStylingImg from '../assets/ChartStyling.png';
 
 const StyledOverLay = styled(motion.div)`
   height: 100vh;
@@ -54,6 +56,7 @@ const StyledModalInnerContainer = styled.div`
   overflow-x: auto;
   margin: 50px auto 50px auto;
   padding-right: 10px;
+  width: 95%;
 
   &::-webkit-scrollbar {
     border-radius: 5px;
@@ -85,6 +88,84 @@ const StyledCloseMenuIcon = styled(CloseMenuIcon)`
   transform: translateY(-50%);
 `;
 
+const StyledTextContainer = styled.div`
+  margin: 0px auto 1rem auto;
+  display: flex;
+  flex-direction: row;
+`;
+
+const StyledDescText = styled.h3`
+  color: white;
+  display: flex;
+  margin: auto;
+  width: 220px;
+  font-weight: 400;
+`;
+const StyledLink = styled.a`
+  display: flex;
+  margin: auto auto auto 2rem;
+`;
+
+const StyledGithubIcon = styled(GithubIcon)`
+  height: 40px;
+  width: 40px;
+  svg {
+    height: 40px;
+    width: 40px;
+  }
+  path {
+    fill: white;
+  }
+`;
+
+const StyledStylingOptionsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0rem auto auto auto;
+`;
+
+const StyledStylingOptionsTitleText = styled.h3`
+  color: white;
+  margin: auto auto 1rem 0px;
+`;
+
+const StyledListContainer = styled.ul`
+  margin: auto;
+`;
+
+const StyledListItem = styled.li`
+  color: white;
+  margin: auto auto 1rem auto;
+  font-size: 1.17em;
+`;
+
+const StyledImage = styled.img`
+  width: 70%;
+  margin: auto;
+`;
+
+const StyledTopContainer = styled.div`
+  display: flex;
+  margin: auto auto 2rem auto;
+  flex-direction: row;
+  width: 80%;
+`;
+
+const StyledTopLeftContainer = styled.div`
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+`;
+const StyledTopRightContainer = styled.div`
+  display: flex;
+  margin: 0px auto auto 4rem;
+  flex-direction: column;
+`;
+
+const StyledLinkText = styled.a`
+  color: #1ba158;
+`;
+
 const CodeModal = ({ codeModalOpen, handleCloseCodeModal }) => {
   return (
     <ModalPortal>
@@ -110,7 +191,75 @@ const CodeModal = ({ codeModalOpen, handleCloseCodeModal }) => {
                 <StyledModalTitle>Code:</StyledModalTitle>
                 <StyledCloseMenuIcon onClick={handleCloseCodeModal} />
               </StyledHeaderDiv>
-              <StyledModalInnerContainer></StyledModalInnerContainer>
+              <StyledModalInnerContainer>
+                <StyledTopContainer>
+                  <StyledTopLeftContainer>
+                    <StyledTextContainer>
+                      <StyledDescText>Nebula Config:</StyledDescText>
+                      <StyledLink
+                        href="https://github.com/CalibrateGlobal/nebula.js-library/blob/main/src/utils/qlik/nebulaConfig.js"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <StyledGithubIcon />
+                      </StyledLink>
+                    </StyledTextContainer>
+                    <StyledTextContainer>
+                      <StyledDescText>Enigma Integration:</StyledDescText>
+                      <StyledLink
+                        href="https://github.com/CalibrateGlobal/nebula.js-library/blob/main/src/utils/qlik/useQlik.jsx"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <StyledGithubIcon />
+                      </StyledLink>
+                    </StyledTextContainer>
+                    <StyledTextContainer>
+                      <StyledDescText>Rendering a Chart:</StyledDescText>
+                      <StyledLink
+                        href="https://github.com/CalibrateGlobal/nebula.js-library/blob/main/src/pages/Chart.jsx"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <StyledGithubIcon />
+                      </StyledLink>
+                    </StyledTextContainer>
+                  </StyledTopLeftContainer>
+                  <StyledTopRightContainer>
+                    <StyledStylingOptionsContainer>
+                      <StyledStylingOptionsTitleText>
+                        Nebula Chart Styling Options:
+                      </StyledStylingOptionsTitleText>
+                      <StyledListContainer>
+                        <StyledListItem>
+                          <StyledLinkText
+                            href="https://qlik.dev/libraries-and-tools/nebulajs/applying-themes"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Themes
+                          </StyledLinkText>
+                        </StyledListItem>
+                        <StyledListItem style={{ maxWidth: '600px' }}>
+                          Access to certain elements via css selectors (e.g.
+                          titles, chart background etc - see below)
+                        </StyledListItem>
+
+                        <StyledListItem>
+                          <StyledLinkText
+                            href="https://qlik.dev/libraries-and-tools/picassojs"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Plugins
+                          </StyledLinkText>
+                        </StyledListItem>
+                      </StyledListContainer>
+                    </StyledStylingOptionsContainer>
+                  </StyledTopRightContainer>
+                </StyledTopContainer>
+                <StyledImage src={ChartStylingImg} />
+              </StyledModalInnerContainer>
             </StyledModalOuterContainer>
           </>
         )}

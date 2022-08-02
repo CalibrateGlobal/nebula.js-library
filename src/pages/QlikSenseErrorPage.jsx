@@ -87,6 +87,7 @@ const QlikSenseErrorPage = ({ signedIn }) => {
               <a
                 href="https://cc-edapps.calibrateconsulting.com/"
                 target="_blank"
+                rel="noreferrer"
                 style={{ textDecoration: 'none' }}
               >
                 <b style={{ color: '#05994a', fontSize: '1.7rem' }}>
@@ -99,6 +100,7 @@ const QlikSenseErrorPage = ({ signedIn }) => {
             <a
               href="https://cc-edapps.calibrateconsulting.com/sense/app/a8def80d-0228-4837-ad84-47f8bf8bfb0a"
               target="_blank"
+              rel="noreferrer"
               style={{ textDecoration: 'none' }}
             >
               <StyledMessageText style={{ color: '#c95c5c' }}>
@@ -108,6 +110,7 @@ const QlikSenseErrorPage = ({ signedIn }) => {
             <a
               href="https://cc-edapps.calibrateconsulting.com/sense/app/25bbde2e-79eb-4eab-9c12-4ab56594a738"
               target="_blank"
+              rel="noreferrer"
               style={{ textDecoration: 'none' }}
             >
               <StyledMessageText style={{ color: '#c95c5c' }}>
