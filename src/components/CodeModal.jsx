@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 import ModalPortal from '../utils/ModalPortal';
 import CloseMenuIcon from './icons/CloseMenuIcon';
 
-const StyledOverLay = styled.div`
+const StyledOverLay = styled(motion.div)`
   height: 100vh;
   width: 100vw;
   background-color: rgba(75, 85, 99, 0.8);
   position: absolute;
   top: 0;
-  z-index: ${(props) => (props.codeModalOpen ? 500 : -500)};
-  opacity: ${(props) => (props.codeModalOpen ? 1 : 0)};
+  z-index: 400;
+  opacity: 0;
   backdrop-filter: blur(2px);
 `;
 
-const StyledModalOuterContainer = styled.div`
+const StyledModalOuterContainer = styled(motion.div)`
   position: absolute;
-  z-index: ${(props) => (props.codeModalOpen ? 500 : -500)};
+  z-index: 500;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,7 +28,8 @@ const StyledModalOuterContainer = styled.div`
   background-color: #171f34;
   border: 1px solid #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  opacity: ${(props) => (props.codeModalOpen ? 1 : 0)};
+  /* opacity: ${(props) => (props.codeModalOpen ? 1 : 0)}; */
+  opacity: 0;
 `;
 
 const StyledHeaderDiv = styled.div`
@@ -86,14 +88,33 @@ const StyledCloseMenuIcon = styled(CloseMenuIcon)`
 const CodeModal = ({ codeModalOpen, handleCloseCodeModal }) => {
   return (
     <ModalPortal>
-      <StyledOverLay codeModalOpen={codeModalOpen} />
-      <StyledModalOuterContainer codeModalOpen={codeModalOpen}>
-        <StyledHeaderDiv>
-          <StyledModalTitle>Code:</StyledModalTitle>
-          <StyledCloseMenuIcon onClick={handleCloseCodeModal} />
-        </StyledHeaderDiv>
-        <StyledModalInnerContainer></StyledModalInnerContainer>
-      </StyledModalOuterContainer>
+      <AnimatePresence>
+        {codeModalOpen && (
+          <>
+            <StyledOverLay
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ ease: 'linear', duration: 0.1 }}
+            />
+
+            <StyledModalOuterContainer
+              key="modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ ease: 'linear', duration: 0.3 }}
+            >
+              <StyledHeaderDiv>
+                <StyledModalTitle>Code:</StyledModalTitle>
+                <StyledCloseMenuIcon onClick={handleCloseCodeModal} />
+              </StyledHeaderDiv>
+              <StyledModalInnerContainer></StyledModalInnerContainer>
+            </StyledModalOuterContainer>
+          </>
+        )}
+      </AnimatePresence>
     </ModalPortal>
   );
 };

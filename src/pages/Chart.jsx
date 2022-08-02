@@ -6,7 +6,6 @@ import { useParams, Navigate } from 'react-router-dom';
 import SideBar from '../components/SideBar';
 
 import CodeModal from '../components/CodeModal';
-
 const StyledPageContainer = styled.div`
   height: 100vh;
   width: 100vw;
