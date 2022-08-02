@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
@@ -110,7 +110,7 @@ const StyledIconContainer = styled.div`
   margin: auto;
 `;
 
-const Dashboard = () => {
+const Dashboard = ({ signedIn }) => {
   const getIcon = (category) => {
     switch (category) {
       case 'barchart':
@@ -178,20 +178,26 @@ const Dashboard = () => {
         </StyledPageTitle>
       </StyledNavBar>
       <StyledChartListOuterContainer>
-        <StyledChartListInnerContainer>
-          {chartList.map((item) => (
-            <StyledChartCategoryItem
-              key={item.category}
-              to={`chart/${item.category}/${getSelectedChartId(item.category)}`}
-            >
-              <StyledCategoryTitle>{item.title}</StyledCategoryTitle>
+        {!signedIn ? (
+          <Navigate to="/error" />
+        ) : (
+          <StyledChartListInnerContainer>
+            {chartList.map((item) => (
+              <StyledChartCategoryItem
+                key={item.category}
+                to={`chart/${item.category}/${getSelectedChartId(
+                  item.category
+                )}`}
+              >
+                <StyledCategoryTitle>{item.title}</StyledCategoryTitle>
 
-              <StyledIconContainer>
-                {getIcon(item.category)}
-              </StyledIconContainer>
-            </StyledChartCategoryItem>
-          ))}
-        </StyledChartListInnerContainer>
+                <StyledIconContainer>
+                  {getIcon(item.category)}
+                </StyledIconContainer>
+              </StyledChartCategoryItem>
+            ))}
+          </StyledChartListInnerContainer>
+        )}
       </StyledChartListOuterContainer>
     </StyledScreenContainer>
   );
