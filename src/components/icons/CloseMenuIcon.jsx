@@ -36,10 +36,10 @@ function CloseMenuIcon({ className, ...rest }) {
         initial="hidden"
         animate="visible"
         whileHover={{
-          scale: 1.2,
+          scale: 1.1,
           transition: {
-            delay: 0.2,
-            duration: 0.4,
+            
+            duration: 0.3,
           },
         }}
       >

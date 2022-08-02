@@ -42,7 +42,7 @@ const StyledHamburgerMenuIcon = styled(HamburgerMenuIcon)`
   margin: 0 2rem 0;
 `;
 
-const NavIcon = styled.button`
+const NavIcon = styled(motion.button)`
   text-decoration: none;
   background: transparent;
   border: none;
@@ -53,7 +53,7 @@ const StyledCloseMenuIcon = styled(CloseMenuIcon)`
   cursor: pointer;
   width: 50px;
   height: 50px;
-  margin: 0 125px 0 125px;
+  margin: 0 2rem 0 2rem;
 `;
 
 const StyledSideBarNav = styled(motion.nav)`
@@ -68,7 +68,7 @@ const StyledSideBarNav = styled(motion.nav)`
   align-items: center;
   position: fixed;
   top: 150px;
-  right: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  right: 0;
   z-index: 10;
 `;
 
@@ -106,7 +106,7 @@ const StyledChartListInnerContainer = styled.div`
   }
 `;
 
-const StyledChartCategoryItem = styled(motion.Link)`
+const StyledChartCategoryItem = styled(motion(Link))`
   width: 90%;
   height: fit-content;
   background: #049eb8;
@@ -141,10 +141,17 @@ const StyledIconContainer = styled.div`
   margin: auto;
 `;
 
-const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: '100%' },
+const sideBarVariants = {
+  open: { opacity: 1, x: '0px' },
+  closed: { opacity: 0, x: '300px' },
 };
+
+const closeButtonVariants = {
+  open: { x: '-6rem' },
+  closed: { x: '-20px' },
+};
+
+const StyledMotionCodeButton = motion(StyledCodeButton);
 
 function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
   const [sidebar, setSidebar] = useState(false);
@@ -211,15 +218,31 @@ function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
           <StyledTitle>{chartTitle}</StyledTitle>
           <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
         </StyledPageTitle>
-        <StyledCodeButton onClick={handleOpenCodeModal}>Code</StyledCodeButton>
-        <NavIcon onClick={showSidebar}>
+        <StyledMotionCodeButton
+          onClick={handleOpenCodeModal}
+          animate={sidebar ? 'open' : 'closed'}
+          variants={closeButtonVariants}
+          whileHover={{
+            scale: 1.05,
+            transition: {
+              duration: 0.3,
+            },
+          }}
+        >
+          Code
+        </StyledMotionCodeButton>
+        <NavIcon
+          onClick={showSidebar}
+          animate={sidebar ? 'open' : 'closed'}
+          variants={closeButtonVariants}
+        >
           {sidebar ? <StyledCloseMenuIcon /> : <StyledHamburgerMenuIcon />}
         </NavIcon>
         <StyledSideBarContainer>
           <StyledSideBarNav
-            sidebar={sidebar}
+            initial={{ opacity: 0, x: '300px' }}
             animate={sidebar ? 'open' : 'closed'}
-            variants={variants}
+            variants={sideBarVariants}
           >
             <StyledChartListInnerContainer>
               {chartList[categoryIndex].subcategories.map((item) => (
@@ -227,9 +250,8 @@ function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
                   value={item.category}
                   to={`/chart/${category}/${item.chartId}`}
                   key={item.chartId}
-                  as={motion.div}
                   whileHover={{
-                    scale: 1.1,
+                    scale: 1.03,
                     boxShadow: '0 8px 5px 0 rgba(0, 0, 0, 0.25)',
                     backdropFilter: 'blur(5.5px)',
                     WebkitBackdropFilter: 'blur(5.5px)',

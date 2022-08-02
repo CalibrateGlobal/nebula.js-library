@@ -17,7 +17,7 @@ const svgVariants = {
 const lineVariants = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i) => {
-    const delay = 0.5 + i;
+    const delay = 0.2 + i;
     return {
       pathLength: 1,
       opacity: 1,
@@ -42,10 +42,10 @@ const HamburgerMenuIcon = ({ className }) => {
         initial="hidden"
         animate="visible"
         whileHover={{
-          scale: 1.2,
+          scale: 1.1,
           transition: {
-            delay: 0.2,
-            duration: 0.4,
+            /* delay: 0.2, */
+            duration: 0.3,
           },
         }}
       >
@@ -83,7 +83,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={0.75}
+          custom={0.1}
         />
         <motion.line
           x1="10"
@@ -93,7 +93,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={1}
+          custom={0.2}
         />
         <motion.line
           x1="10"
@@ -103,7 +103,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={1.25}
+          custom={0.3}
         />
         <motion.line
           x1="10"
@@ -113,7 +113,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={1.5}
+          custom={0.4}
         />
         <motion.line
           x1="10"
@@ -123,7 +123,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={1.75}
+          custom={0.5}
         />
         <motion.line
           x1="10"
@@ -133,7 +133,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={2}
+          custom={0.6}
         />
         <motion.line
           x1="10"
@@ -143,7 +143,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={2.25}
+          custom={0.7}
         />
         <motion.line
           x1="10"
@@ -153,7 +153,7 @@ const HamburgerMenuIcon = ({ className }) => {
           stroke="white"
           strokeWidth="2"
           variants={lineVariants}
-          custom={2.5}
+          custom={0.8}
         />
       </motion.svg>
     </div>
