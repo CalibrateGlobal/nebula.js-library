@@ -7,9 +7,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './globalStyles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const getBaseName = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return '/extensions/nebula-lib/index.html';
+  }
+  return '';
+};
+console.log(process.env.NODE_ENV);
 root.render(
-  <BrowserRouter>
-  <GlobalStyle />
+  <BrowserRouter basename={getBaseName()}>
+    <GlobalStyle />
     <App />
   </BrowserRouter>
 );
