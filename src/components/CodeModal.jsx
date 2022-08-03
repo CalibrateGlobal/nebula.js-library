@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ModalPortal from '../utils/ModalPortal';
 import CloseMenuIcon from './icons/CloseMenuIcon';
 import GithubIcon from './icons/GithubIcon';
-import ChartStylingImg from '../assets/ChartStyling.png';
 
 const StyledOverLay = styled(motion.div)`
   height: 100vh;
@@ -258,7 +257,7 @@ const CodeModal = ({ codeModalOpen, handleCloseCodeModal }) => {
                     </StyledStylingOptionsContainer>
                   </StyledTopRightContainer>
                 </StyledTopContainer>
-                <StyledImage src={ChartStylingImg} />
+                <StyledImage src="/assets/ChartStyling.png" />
               </StyledModalInnerContainer>
             </StyledModalOuterContainer>
           </>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import QlikSenseErrorPage from './pages/QlikSenseErrorPage';
 import Chart from './pages/Chart';
@@ -11,10 +11,6 @@ const App = () => {
   const { global, nebula } = useQlik(app1);
   const { nebula: nebula2 } = useQlik(app2);
   const [userDir, setUserDir] = useState('CC-EDAPPS');
-
-  let location = useLocation();
-
-  console.log(location);
 
   useEffect(() => {
     const getUser = async () => {
