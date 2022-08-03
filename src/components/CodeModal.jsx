@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ModalPortal from '../utils/ModalPortal';
 import CloseMenuIcon from './icons/CloseMenuIcon';
 import GithubIcon from './icons/GithubIcon';
-import ChartStylingImg from '../assets/ChartStyling.png';
 
 const StyledOverLay = styled(motion.div)`
   height: 100vh;
@@ -167,6 +166,12 @@ const StyledLinkText = styled.a`
 `;
 
 const CodeModal = ({ codeModalOpen, handleCloseCodeModal }) => {
+  const getImagePath = () => {
+    if (process.env.NODE_ENV === 'production') {
+      return '/extensions/nebula-lib/assets/ChartStyling.png';
+    }
+    return '/assets/ChartStyling.png';
+  };
   return (
     <ModalPortal>
       <AnimatePresence>
@@ -258,7 +263,7 @@ const CodeModal = ({ codeModalOpen, handleCloseCodeModal }) => {
                     </StyledStylingOptionsContainer>
                   </StyledTopRightContainer>
                 </StyledTopContainer>
-                <StyledImage src={ChartStylingImg} />
+                <StyledImage src={getImagePath()} />
               </StyledModalInnerContainer>
             </StyledModalOuterContainer>
           </>
