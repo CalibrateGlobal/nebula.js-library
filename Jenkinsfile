@@ -9,8 +9,7 @@ pipeline {
         }
         stage("Test") {
             steps {
-                sh "
-                "
+                sh ""
             }
         }
     }
