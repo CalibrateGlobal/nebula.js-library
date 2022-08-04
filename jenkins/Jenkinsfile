@@ -6,8 +6,17 @@ pipeline {
     stages {
         stage("Build") {
             steps {
+                echo 'Installing npm packages'
                 sh "npm install --legacy-peer-deps"
-                echo 'test'
+
+                echo 'Build static site'
+                sh "npm run build"
+
+                echo 'Copy .qext file'
+                sh "cp nebula-lib.qext build/"
+
+                echo 'Zip build folder'
+                sh "(cd build && zip -r ../nebula-lib.zip .)"
             }
         }
     }
