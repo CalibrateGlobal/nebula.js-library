@@ -9,7 +9,9 @@ pipeline {
         }
         stage("Test") {
             steps {
-                sh "npm run test"
+                sh "npm install react-scripts"
+                "npm install"
+                "npm run test"
             }
         }
     }
