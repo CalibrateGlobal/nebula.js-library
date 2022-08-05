@@ -44,20 +44,23 @@ export const StyledPageTitle = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   padding: 0.5ch 0 0.5ch 0;
+  display: flex;
+  flex-direction: column;
 `;
 export const StyledTitle = styled.div`
   font-size: 3rem;
   color: #fff;
   font-weight: 600;
+  margin: auto;
 `;
 export const StyledSubTitle = styled.div`
   font-size: 1.5rem;
   color: #fff;
   font-weight: 400;
   text-align: center;
+  margin: auto;
 `;
 
 export const StyledLogoIcon = styled(LogoIcon)`
   margin: auto;
 `;
-

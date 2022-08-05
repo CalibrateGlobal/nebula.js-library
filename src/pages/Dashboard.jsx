@@ -129,7 +129,7 @@ const Dashboard = ({ signedIn }) => {
         return <StyledFunnelChartIcon />;
       case 'gridchart':
         return <StyledGridChartIcon />;
-      case 'histogramchart':
+      case 'histogram':
         return <StyledHistogramChartIcon />;
       case 'kpi':
         return <StyledKPIIcon />;
@@ -185,9 +185,13 @@ const Dashboard = ({ signedIn }) => {
             {chartList.map((item) => (
               <StyledChartCategoryItem
                 key={item.category}
-                to={`chart/${item.category}/${getSelectedChartId(
-                  item.category
-                )}`}
+                to={
+                  item.category === 'button'
+                    ? `chart/button`
+                    : `chart/${item.category}/${getSelectedChartId(
+                        item.category
+                      )}`
+                }
               >
                 <StyledCategoryTitle>{item.title}</StyledCategoryTitle>
 

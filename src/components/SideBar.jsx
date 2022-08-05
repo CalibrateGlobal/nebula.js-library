@@ -79,6 +79,7 @@ const StyledChartListInnerContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   height: calc(100% - 0px);
+  width: calc(100% - 20px);
   overflow-y: auto;
   overflow-x: auto;
   margin: 0px 10px 0px 10px;
@@ -182,7 +183,7 @@ function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
         return <StyledFunnelChartIcon />;
       case 'gridchart':
         return <StyledGridChartIcon />;
-      case 'histogramchart':
+      case 'histogram':
         return <StyledHistogramChartIcon />;
       case 'kpi':
         return <StyledKPIIcon />;
