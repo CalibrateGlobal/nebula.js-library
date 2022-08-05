@@ -16,7 +16,7 @@ sh "npm run test"
                     catch(error){ echo error
 
                     }
-                }
+                =}
                 
             }
         }
