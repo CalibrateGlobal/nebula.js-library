@@ -4,12 +4,25 @@ pipeline {
     stages {
         stage("Build") {
             steps {
-                sh ""
+                sh "npm install --legacy-peer-deps"
             }
         }
         stage("Test") {
             steps {
-                sh ""
+                script{
+                    try{
+sh "npm run test"
+                    }
+                    catch(error){ echo error
+
+                    }
+                =}
+                
+            }
+        }
+        stage('Lint'){
+            steps{
+                sh "npm run lint"
             }
         }
     }
