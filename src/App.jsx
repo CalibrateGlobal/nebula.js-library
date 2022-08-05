@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import QlikSenseErrorPage from './pages/QlikSenseErrorPage';
 import Chart from './pages/Chart';
+import ChartButton from './pages/ChartButton';
 import IconList from './pages/IconList';
 import { app1, app2 } from './data/chartList';
 import useQlik from './utils/qlik/useQlik';
@@ -40,6 +41,12 @@ const App = () => {
         path="/chart/:category/:chartId"
         element={
           <Chart nebula={nebula} nebula2={nebula2} signedIn={getSignedIn()} />
+        }
+      />
+      <Route
+        path="/chart/button"
+        element={
+          <ChartButton nebula={nebula} nebula2={nebula2} signedIn={getSignedIn()} />
         }
       />
       <Route path="/iconlist" element={<IconList />} />
