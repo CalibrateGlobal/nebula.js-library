@@ -1,5 +1,5 @@
 export const app1 = 'a8def80d-0228-4837-ad84-47f8bf8bfb0a';
-export const app2 = '25bbde2e-79eb-4eab-9c12-4ab56594a738';
+export const app2 = 'e2b04f6a-4659-4da5-ac01-5a0fbfc09fe7';
 
 const chartList = [
   {
@@ -85,23 +85,23 @@ const chartList = [
     subcategories: [
       {
         title: 'Selection Button 1',
-        chartId: 'vCFdA',
+        chartId: 'jYfP',
       },
       {
         title: 'Selection Button 2',
-        chartId: 'mJatJPB',
+        chartId: 'QftDfj',
       },
       {
         title: 'Selection Button 3',
-        chartId: 'qRYmX',
+        chartId: 'jhvdn',
       },
       {
         title: 'Clear Selection Button',
-        chartId: 'CQjqr',
+        chartId: 'CVtypXv',
       },
       {
         title: 'Button Illustration Chart',
-        chartId: 'bhgCPxJ',
+        chartId: 'JPkma',
       },
     ],
   },
@@ -154,6 +154,275 @@ const chartList = [
         title: 'Horizontal Distribution Plot',
         subtitle: '(Grouped with Reference Line)',
         chartId: 'nEcUJT',
+      },
+    ],
+  },
+  {
+    category: 'funnelchart',
+    title: 'Funnel Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Funnel Chart',
+        subtitle: '(Simple Ordering)',
+        chartId: 'jjQacbk',
+      },
+      {
+        title: 'Funnel Chart',
+        subtitle: '(Area corresponding to value)',
+        chartId: 'Ajug',
+      },
+      {
+        title: 'Funnel Chart',
+        subtitle: '(Width corresponding to value - Ex 1)',
+        chartId: 'SPzQjmm',
+      },
+      {
+        title: 'Funnel Chart',
+        subtitle: '(Width corresponding to value - Ex 2)',
+        chartId: 'zhPJaCa',
+      },
+    ],
+  },
+  {
+    category: 'gridchart',
+    title: 'Grid Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Vertical Grid Chart',
+        subtitle: '(Circles)',
+        chartId: 'ejgUw',
+      },
+      {
+        title: 'Vertical Grid Chart',
+        subtitle: '(Crosses)',
+        chartId: 'mRbLZg',
+      },
+      {
+        title: 'Horizontal Grid Chart',
+        subtitle: '(Addition Signs / Crosses)',
+        chartId: 'gYQAjv',
+      },
+      {
+        title: 'Horizontal Grid Chart',
+        subtitle: '(Stars)',
+        chartId: 'PhaLTAj',
+      },
+    ],
+  },
+  {
+    category: 'histogram',
+    title: 'Histogram',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Histogram',
+        subtitle: '',
+        chartId: 'swcwQC',
+      },
+      {
+        title: 'Histogram',
+        subtitle: '(Reference Line)',
+        chartId: 'RSbeWP',
+      },
+    ],
+  },
+  {
+    category: 'kpi',
+    title: 'KPI',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Single KPI',
+        subtitle: '(Percentage)',
+        chartId: 'XUTWgUj',
+      },
+      {
+        title: 'Single KPI',
+        subtitle: '(Number)',
+        chartId: 'xUxtvt',
+      },
+      {
+        title: 'Multi KPI',
+        subtitle: '(Thousands & Percentage)',
+        chartId: 'EptJqtq',
+      },
+      {
+        title: 'Multi KPI',
+        subtitle: '(Number & Percentage)',
+        chartId: 'kpeyvEQ',
+      },
+    ],
+  },
+  {
+    category: 'linechart',
+    title: 'Line Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Single Line Chart',
+        subtitle: '',
+        chartId: 'CdYfC',
+      },
+      {
+        title: 'Multi Line Chart',
+        subtitle: '',
+        chartId: 'pjDecfF',
+      },
+      {
+        title: 'Multi Line Chart',
+        subtitle: '(Area)',
+        chartId: 'brpuR',
+      },
+      {
+        title: 'Single Line Chart',
+        subtitle: '(Brush / Mini Chart)',
+        chartId: 'ajchv',
+      },
+    ],
+  },
+  {
+    category: 'mekkochart',
+    title: 'Mekko Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Mekko Chart',
+        subtitle: '(Ex 1)',
+        chartId: 'MmmAmG',
+      },
+      {
+        title: 'Mekko Chart',
+        subtitle: '(Ex 2)',
+        chartId: 'BupyFSk',
+      },
+    ],
+  },
+  {
+    category: 'orgchart',
+    title: 'Organisational Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Organisational Chart',
+        subtitle: '',
+        chartId: 'uKKAxj',
+      },
+      {
+        title: 'Organisational Chart',
+        subtitle: '(Expandable)',
+        chartId: 'kZNZsj',
+      },
+    ],
+  },
+  {
+    category: 'piechart',
+    title: 'Pie Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Pie Chart',
+        subtitle: '(Ex 1)',
+        chartId: 'JgXwD',
+      },
+      {
+        title: 'Pie Chart',
+        subtitle: '(Ex 2)',
+        chartId: 'nJaevE',
+      },
+      {
+        title: 'Donut Chart',
+        subtitle: '(Ex 1)',
+        chartId: 'KPbnPDB',
+      },
+      {
+        title: 'Donut Chart',
+        subtitle: '(Ex 2)',
+        chartId: 'jDtMP',
+      },
+    ],
+  },
+  {
+    category: 'sankeychart',
+    title: 'Sankey Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Sankey Chart',
+        subtitle: '(Ex 1)',
+        chartId: 'bKYjhap',
+      },
+      {
+        title: 'Sankey Chart',
+        subtitle: '(Ex 2)',
+        chartId: 'QQSJvux',
+      },
+      {
+        title: 'Sankey Chart',
+        subtitle: '(Ex 3 - Max Node Padding)',
+        chartId: 'UYRDYF',
+      },
+    ],
+  },
+  {
+    category: 'table',
+    title: 'Table',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Table',
+        subtitle: '',
+        chartId: 'EaNVm',
+      },
+      {
+        title: 'Table',
+        subtitle: '(Highlighting)',
+        chartId: 'urKSeJ',
+      },
+      {
+        title: 'Pivot Table',
+        subtitle: '',
+        chartId: 'majMbz',
+      },
+    ],
+  },
+  {
+    category: 'scatterplot',
+    title: 'Scatter Plot',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Scatter Plot',
+        subtitle: '',
+        chartId: 'GHVJs',
+      },
+      {
+        title: 'Scatter Plot',
+        subtitle: '(Reference Line)',
+        chartId: 'hfqZxLt',
+      },
+      {
+        title: 'Scatter Plot',
+        subtitle: '(Colour by Dimension)',
+        chartId: 'LdpmSF',
+      },
+      {
+        title: 'Scatter Plot',
+        subtitle: '(Colour by Measure)',
+        chartId: 'rAWAM',
+      },
+    ],
+  },
+  {
+    category: 'waterfallchart',
+    title: 'Waterfall Chart',
+    appId: app2,
+    subcategories: [
+      {
+        title: 'Waterfall Chart',
+        subtitle: '',
+        chartId: 'BBdHne',
       },
     ],
   },

@@ -52,15 +52,15 @@ const nebulaConfig = embed.createConfiguration({
       load: () => Promise.resolve(lineChart),
     },
     {
-      name: 'sankeychart',
+      name: 'qlik-sankey-chart-ext', // could also be sankey or sankeychart depending on the qlik object?
       load: () => Promise.resolve(sankeyChart),
     },
     {
-      name: 'funnechart',
+      name: 'qlik-funnel-chart-ext',
       load: () => Promise.resolve(funneChart),
     },
     {
-      name: 'mekkochart',
+      name: 'mekko',
       load: () => Promise.resolve(mekkoChart),
     },
     {
@@ -100,7 +100,7 @@ const nebulaConfig = embed.createConfiguration({
       load: () => Promise.resolve(histogram),
     },
     {
-      name: 'orgchart',
+      name: 'sn-org-chart',
       load: () => Promise.resolve(orgChart),
     },
     {
@@ -112,7 +112,7 @@ const nebulaConfig = embed.createConfiguration({
       load: () => Promise.resolve(table),
     },
     {
-      name: 'waterfall',
+      name: 'waterfallchart',
       load: () => Promise.resolve(waterfall),
     },
   ],
