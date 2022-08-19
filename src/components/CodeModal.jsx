@@ -13,7 +13,7 @@ const StyledOverLay = styled(motion.div)`
   top: 0;
   z-index: 400;
   opacity: 0;
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); */
 `;
 
 const StyledModalOuterContainer = styled(motion.div)`
@@ -29,7 +29,6 @@ const StyledModalOuterContainer = styled(motion.div)`
   background-color: #171f34;
   border: 1px solid #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  /* opacity: ${(props) => (props.codeModalOpen ? 1 : 0)}; */
   opacity: 0;
 `;
 
