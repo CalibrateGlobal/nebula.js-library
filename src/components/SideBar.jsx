@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -208,6 +208,37 @@ function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
     }
   };
 
+  const titleVariants = {
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        duration: 0,
+      },
+    },
+  };
+
+  const [titleVisible, setTitleVisible] = useState();
+  const [title, setTitle] = useState();
+  const [subTitle, setSubTitle] = useState();
+
+  useEffect(() => {
+    setTitleVisible(false);
+    setTitle('');
+    setSubTitle('');
+    const time = setTimeout(() => {
+      setTitle(chartTitle);
+      setSubTitle(chartSubTitle);
+      setTitleVisible(true);
+    }, 200);
+    return () => clearTimeout(time);
+  }, [chartTitle, chartSubTitle]);
+
   return (
     <>
       <StyledNavBar className="navbar">
@@ -215,9 +246,13 @@ function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
           <StyledLogoIcon />
           NEBULA.JS LIBRARY
         </StyledNavButton>
-        <StyledPageTitle>
-          <StyledTitle>{chartTitle}</StyledTitle>
-          <StyledSubTitle>{chartSubTitle}</StyledSubTitle>
+        <StyledPageTitle
+          variants={titleVariants}
+          animate={titleVisible ? 'visible' : 'hidden'}
+          initial="hidden"
+        >
+          <StyledTitle>{title}</StyledTitle>
+          <StyledSubTitle>{subTitle}</StyledSubTitle>
         </StyledPageTitle>
         <StyledMotionCodeButton
           onClick={handleOpenCodeModal}
@@ -254,8 +289,6 @@ function SideBar({ chartTitle, chartSubTitle, handleOpenCodeModal }) {
                   whileHover={{
                     scale: 1.03,
                     boxShadow: '0 8px 5px 0 rgba(0, 0, 0, 0.25)',
-                    backdropFilter: 'blur(5.5px)',
-                    WebkitBackdropFilter: 'blur(5.5px)',
                   }}
                 >
                   <StyledCategoryTitle>{item.title}</StyledCategoryTitle>

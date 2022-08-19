@@ -23,8 +23,9 @@ const StyledChartContainer = styled.div`
   border-radius: 5px;
   height: calc(100% - 250px);
   width: calc(100% - 100px);
+  max-width: 1200px;
   overflow: hidden;
-  padding: 25px 25px 50px 50px;
+  padding: 50px 50px 50px 50px;
 `;
 
 const Chart = ({ nebula, nebula2, signedIn }) => {

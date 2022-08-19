@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import chartList, { app1, app2 } from '../data/chartList';
-import { useParams, Navigate } from 'react-router-dom';
+import chartList from '../data/chartList';
+import { Navigate } from 'react-router-dom';
 
 import CodeModal from '../components/CodeModal';
 import NavBarButton from '../components/NavBarButton';

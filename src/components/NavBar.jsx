@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import LogoIcon from './icons/LogoIcon';
-import HamburgerMenuIcon from './icons/HamburgerMenuIcon';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export const StyledNavBar = styled.nav`
   width: 100%;
@@ -36,7 +36,7 @@ export const StyledCodeButton = styled.button`
   margin-left: auto;
 `;
 
-export const StyledPageTitle = styled.div`
+export const StyledPageTitle = styled(motion.div)`
   font-size: 3rem;
   color: #fff;
   font-weight: 600;
@@ -47,13 +47,13 @@ export const StyledPageTitle = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const StyledTitle = styled.div`
+export const StyledTitle = styled(motion.div)`
   font-size: 3rem;
   color: #fff;
   font-weight: 600;
   margin: auto;
 `;
-export const StyledSubTitle = styled.div`
+export const StyledSubTitle = styled(motion.div)`
   font-size: 1.5rem;
   color: #fff;
   font-weight: 400;
