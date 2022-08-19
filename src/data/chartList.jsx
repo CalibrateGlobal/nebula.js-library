@@ -188,6 +188,7 @@ const chartList = [
     category: 'gridchart',
     title: 'Grid Chart',
     appId: app2,
+    disabled: true,
     subcategories: [
       {
         title: 'Vertical Grid Chart',
@@ -286,6 +287,7 @@ const chartList = [
     category: 'mekkochart',
     title: 'Mekko Chart',
     appId: app2,
+    disabled: true,
     subcategories: [
       {
         title: 'Mekko Chart',
