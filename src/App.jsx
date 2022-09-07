@@ -12,6 +12,14 @@ const App = () => {
   const { nebula: nebula2 } = useQlik(app2);
   const [userDir, setUserDir] = useState('CC-EDAPPS');
 
+  // Test the connection with the node server (temp)
+
+  useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => console.log(data.message))
+  }, []);
+
   useEffect(() => {
     const getUser = async () => {
       try {
