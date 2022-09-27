@@ -1,6 +1,7 @@
 import { Link, Navigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import {
   StyledBarChartIcon,
   StyledBoxPlotIcon,
@@ -31,6 +32,7 @@ import {
 } from '../components/NavBar';
 
 import chartList from '../data/chartList';
+import ConstructionIcon from '../components/icons/ConstructionIcon';
 
 const StyledScreenContainer = styled.main`
   display: flex;
@@ -80,10 +82,11 @@ const StyledChartListInnerContainer = styled.div`
   }
 `;
 
-const StyledChartCategoryItem = styled(Link)`
+const StyledChartCategoryItem = styled(motion(Link))`
+  position: relative;
   width: 362px;
   height: 268px;
-  background: #049eb8;
+  background: ${(props) => (props.disabled ? 'grey' : '#049eb8')};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   display: flex;
@@ -92,13 +95,12 @@ const StyledChartCategoryItem = styled(Link)`
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  transition: 0.3s;
-  :hover {
-    transform: scale(1.02);
-  }
+  transform-origin: top;
+  pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 `;
 
 const StyledCategoryTitle = styled.h3`
+  display: flex;
   font-weight: 500;
   font-size: 36px;
   line-height: 54px;
@@ -108,6 +110,32 @@ const StyledCategoryTitle = styled.h3`
 
 const StyledIconContainer = styled.div`
   margin: auto;
+`;
+
+const StyledConstructionContainer = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%) rotate(-10deg);
+  background-color: #d31212;
+  width: 80%;
+  transform-origin: center;
+  box-shadow: 0 4px 8px 0 #00000033;
+`;
+
+const StyledConstructionText = styled.span`
+  margin: auto;
+  color: #ffd600;
+  font-size: 1.4rem;
+`;
+
+const StyledConstructionIcon = styled(ConstructionIcon)`
+  margin: auto;
+  svg {
+    height: 70px;
+  }
 `;
 
 const Dashboard = ({ signedIn }) => {
@@ -129,7 +157,7 @@ const Dashboard = ({ signedIn }) => {
         return <StyledFunnelChartIcon />;
       case 'gridchart':
         return <StyledGridChartIcon />;
-      case 'histogramchart':
+      case 'histogram':
         return <StyledHistogramChartIcon />;
       case 'kpi':
         return <StyledKPIIcon />;
@@ -154,16 +182,11 @@ const Dashboard = ({ signedIn }) => {
     }
   };
 
-  const [selectedChartId, setSelectedChartId] = useState(null);
-
   const getSelectedChartId = (category) => {
-    if (selectedChartId === null) {
-      const categoryIndex = chartList.findIndex(
-        (item) => item.category === category
-      );
-      return chartList[categoryIndex].subcategories[0].chartId;
-    }
-    return selectedChartId;
+    const categoryIndex = chartList.findIndex(
+      (item) => item.category === category
+    );
+    return chartList[categoryIndex].subcategories[0].chartId;
   };
 
   return (
@@ -173,7 +196,7 @@ const Dashboard = ({ signedIn }) => {
           <StyledLogoIcon />
           NEBULA.JS LIBRARY
         </StyledNavButton>
-        <StyledPageTitle>
+        <StyledPageTitle initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <StyledTitle>Category</StyledTitle>
         </StyledPageTitle>
       </StyledNavBar>
@@ -185,15 +208,32 @@ const Dashboard = ({ signedIn }) => {
             {chartList.map((item) => (
               <StyledChartCategoryItem
                 key={item.category}
-                to={`chart/${item.category}/${getSelectedChartId(
-                  item.category
-                )}`}
+                to={
+                  item.category === 'button'
+                    ? `chart/button`
+                    : `chart/${item.category}/${getSelectedChartId(
+                        item.category
+                      )}`
+                }
+                disabled={item.disabled}
+                layout
+                whileHover={{ scale: 1.05, transitionTimingFunction: 'linear' }}
               >
                 <StyledCategoryTitle>{item.title}</StyledCategoryTitle>
 
                 <StyledIconContainer>
                   {getIcon(item.category)}
                 </StyledIconContainer>
+                {item.disabled ? (
+                  <StyledConstructionContainer>
+                    <StyledConstructionText>
+                      UNDER CONSTRUCTION
+                    </StyledConstructionText>
+                    <StyledConstructionIcon />
+                  </StyledConstructionContainer>
+                ) : (
+                  <></>
+                )}
               </StyledChartCategoryItem>
             ))}
           </StyledChartListInnerContainer>

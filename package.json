@@ -11,7 +11,7 @@
     "@nebula.js/sn-combo-chart": "^1.17.7",
     "@nebula.js/sn-distributionplot": "^0.35.3",
     "@nebula.js/sn-funnel-chart": "^1.4.0",
-    "@nebula.js/sn-grid-chart": "^1.8.4",
+    "@nebula.js/sn-grid-chart": "^1.8.6",
     "@nebula.js/sn-histogram": "^0.31.2",
     "@nebula.js/sn-kpi": "^0.9.0",
     "@nebula.js/sn-line-chart": "^1.18.1",
@@ -37,6 +37,7 @@
     "web-vitals": "^2.1.4",
     "ws": "^8.8.0"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
