@@ -1,5 +1,7 @@
-export const app1 = 'a8def80d-0228-4837-ad84-47f8bf8bfb0a';
-export const app2 = 'e2b04f6a-4659-4da5-ac01-5a0fbfc09fe7';
+
+export const app1 = process.env.REACT_APP_APP1;
+export const app2 = process.env.REACT_APP_APP2;
+
 
 const chartList = [
   {
